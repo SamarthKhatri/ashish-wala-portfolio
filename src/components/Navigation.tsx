@@ -5,15 +5,34 @@ import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      setIsScrolled(currentScrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Calculate background opacity based on scroll position
+  const getNavBackgroundStyle = () => {
+    if (scrollY === 0) {
+      return 'bg-slate-800/90 text-white';
+    } else if (scrollY < 100) {
+      const opacity = Math.min(scrollY / 100, 1);
+      return `bg-white/80 backdrop-blur-md border-b border-white/20 shadow-lg text-slate-900`;
+    } else {
+      return 'bg-white/80 backdrop-blur-md border-b border-white/20 shadow-lg text-slate-900';
+    }
+  };
+
+  const getTextColorClass = () => {
+    return scrollY === 0 ? 'text-white' : 'text-slate-700';
+  };
 
   const navItems = [
     { name: 'Home', href: '#hero' },
@@ -35,14 +54,10 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/80 backdrop-blur-md border-b border-white/20 shadow-lg' 
-          : 'bg-transparent'
-      }`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${getNavBackgroundStyle()}`}>
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold tracking-tight text-slate-900">
+            <div className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${getTextColorClass()}`}>
               Taxwise Solution
             </div>
             
@@ -52,7 +67,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-slate-700 hover:text-blue-600 font-light tracking-wide transition-colors duration-200"
+                  className={`hover:text-blue-600 font-light tracking-wide transition-colors duration-300 ${getTextColorClass()}`}
                 >
                   {item.name}
                 </button>
@@ -68,7 +83,7 @@ const Navigation = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors"
+              className={`md:hidden p-2 hover:text-blue-600 transition-colors ${getTextColorClass()}`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

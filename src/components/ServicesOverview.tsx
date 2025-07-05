@@ -25,6 +25,13 @@ const ServicesOverview = () => {
     return () => observer.disconnect();
   }, []);
 
+  const scrollToContact = () => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const services = [
     {
       icon: Calculator,
@@ -77,7 +84,7 @@ const ServicesOverview = () => {
           <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-slate-900 mb-6">
             Our Services
           </h2>
-          <p className="text-xl text-slate-600/80 font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-700 font-light max-w-3xl mx-auto leading-relaxed">
             Comprehensive tax and business advisory services designed to support 
             your success at every stage of growth.
           </p>
@@ -102,14 +109,14 @@ const ServicesOverview = () => {
                   <h3 className="text-xl font-medium tracking-tight text-slate-900 mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600/80 font-light leading-relaxed mb-6">
+                  <p className="text-slate-700 font-light leading-relaxed mb-6">
                     {service.description}
                   </p>
                 </div>
                 
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-slate-600/80">
+                    <li key={featureIndex} className="flex items-center text-sm text-slate-700">
                       <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3" />
                       {feature}
                     </li>
@@ -117,6 +124,7 @@ const ServicesOverview = () => {
                 </ul>
                 
                 <Button 
+                  onClick={scrollToContact}
                   variant="outline" 
                   className="w-full border-blue-200 text-blue-600 hover:bg-blue-50 font-light tracking-wide"
                 >

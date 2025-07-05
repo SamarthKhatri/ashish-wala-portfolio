@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,6 +18,7 @@ const ContactSection = () => {
     message: ''
   });
   const sectionRef = useRef(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,24 +47,38 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Handle form submission logic here
+    
+    // Show success toast
+    toast({
+      title: "Consultation Scheduled!",
+      description: "We will reach you within 24 hours to discuss your tax needs.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      message: ''
+    });
   };
 
   const contactInfo = [
     {
       icon: MapPin,
       title: "Office Location",
-      details: "123 Business District, Suite 456\nNew York, NY 10001"
+      details: "Connaught Place\nNew Delhi, Delhi 110001\nIndia"
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567"
+      details: "+91 6395074230"
     },
     {
       icon: Mail,
       title: "Email",
-      details: "hello@taxwisesolution.com"
+      details: "ASHISHKO52000@GMAIL.COM"
     },
     {
       icon: Clock,
@@ -84,7 +100,7 @@ const ContactSection = () => {
           <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-slate-900 mb-6">
             Get In Touch
           </h2>
-          <p className="text-xl text-slate-600/80 font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-700 font-light max-w-3xl mx-auto leading-relaxed">
             Ready to optimize your business taxes? Contact us for a free consultation 
             and discover how we can help you achieve your financial goals.
           </p>
@@ -112,7 +128,7 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 bg-white/50 border-white/50 focus:border-blue-300"
+                      className="mt-1 bg-white border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     />
                   </div>
                   <div>
@@ -126,7 +142,7 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 bg-white/50 border-white/50 focus:border-blue-300"
+                      className="mt-1 bg-white border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     />
                   </div>
                 </div>
@@ -141,7 +157,7 @@ const ContactSection = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="mt-1 bg-white/50 border-white/50 focus:border-blue-300"
+                      className="mt-1 bg-white border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     />
                   </div>
                   <div>
@@ -154,7 +170,7 @@ const ContactSection = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="mt-1 bg-white/50 border-white/50 focus:border-blue-300"
+                      className="mt-1 bg-white border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     />
                   </div>
                 </div>
@@ -169,7 +185,7 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
-                    className="mt-1 bg-white/50 border-white/50 focus:border-blue-300"
+                    className="mt-1 bg-white border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     placeholder="Tell us about your business and tax needs..."
                   />
                 </div>
@@ -206,7 +222,7 @@ const ContactSection = () => {
                         <h4 className="font-medium text-slate-900 mb-2">
                           {info.title}
                         </h4>
-                        <p className="text-slate-600/80 font-light text-sm whitespace-pre-line leading-relaxed">
+                        <p className="text-slate-700 font-light text-sm whitespace-pre-line leading-relaxed">
                           {info.details}
                         </p>
                       </div>
@@ -225,11 +241,11 @@ const ContactSection = () => {
                 <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <p className="text-slate-600 font-light">
-                      Interactive Map Integration
+                    <p className="text-slate-700 font-light">
+                      Connaught Place, New Delhi
                     </p>
-                    <p className="text-sm text-slate-500 font-light mt-2">
-                      Visit us at our New York office
+                    <p className="text-sm text-slate-600 font-light mt-2">
+                      Visit us at our Delhi office
                     </p>
                   </div>
                 </div>

@@ -29,17 +29,17 @@ const PricingSection = () => {
   const plans = [
     {
       name: "Professional",
-      price: "$299",
+      price: "₹15,000",
       period: "/month",
-      description: "Comprehensive tax solutions for growing businesses with complex needs.",
+      description: "Comprehensive tax solutions for growing businesses with complex needs in India.",
       features: [
-        "Strategic tax planning",
+        "GST filing and compliance",
+        "Income tax planning & filing",
+        "TDS/TCS management",
         "Quarterly tax reviews",
-        "Multi-state filing support",
+        "Multi-state registration support",
         "Dedicated tax specialist",
-        "Audit defense protection",
-        "Business advisory calls",
-        "Priority phone support",
+        "ROC compliance",
         "Tax optimization strategies"
       ],
       buttonText: "Start Professional",
@@ -47,17 +47,18 @@ const PricingSection = () => {
     },
     {
       name: "Enterprise",
-      price: "$799",
+      price: "₹35,000",
       period: "/month",
-      description: "Advanced solutions for large organizations with complex tax requirements.",
+      description: "Advanced solutions for large organizations with complex Indian tax requirements.",
       features: [
         "Full-service tax management",
         "Custom entity structuring",
-        "International tax planning",
+        "International taxation (DTAA)",
+        "Transfer pricing compliance",
         "Dedicated account team",
         "24/7 priority support",
         "Advanced reporting & analytics",
-        "Compliance automation",
+        "FEMA compliance",
         "Executive tax advisory",
         "Custom integrations"
       ],
