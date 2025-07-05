@@ -101,10 +101,12 @@ All colors MUST be HSL.
 
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.05em;
+    opacity: 1;
   }
 
-  p, span, div:not(.font-medium):not(.font-semibold):not(.font-bold) {
-    opacity: 0.8;
+  /* Remove the opacity reduction for text elements */
+  p, span {
+    opacity: 0.9;
   }
 }
 

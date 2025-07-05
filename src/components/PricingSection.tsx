@@ -28,21 +28,6 @@ const PricingSection = () => {
 
   const plans = [
     {
-      name: "Starter",
-      price: "Free",
-      period: "",
-      description: "Perfect for small businesses just getting started with tax planning.",
-      features: [
-        "Basic tax consultation",
-        "Annual tax filing",
-        "Email support",
-        "Tax deadline reminders",
-        "Basic compliance check"
-      ],
-      buttonText: "Get Started",
-      recommended: false
-    },
-    {
       name: "Professional",
       price: "$299",
       period: "/month",
@@ -101,13 +86,13 @@ const PricingSection = () => {
           <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-slate-900 mb-6">
             Pricing Plans
           </h2>
-          <p className="text-xl text-slate-600/80 font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-700 font-light max-w-3xl mx-auto leading-relaxed">
             Choose the perfect plan for your business needs. All plans include 
             our commitment to excellence and client satisfaction.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <Card 
               key={index}
@@ -133,16 +118,16 @@ const PricingSection = () => {
                   </h3>
                   <div className="mb-4">
                     <span className="text-5xl font-light text-slate-900">{plan.price}</span>
-                    <span className="text-slate-600/80 font-light">{plan.period}</span>
+                    <span className="text-slate-700 font-light">{plan.period}</span>
                   </div>
-                  <p className="text-slate-600/80 font-light leading-relaxed">
+                  <p className="text-slate-700 font-light leading-relaxed">
                     {plan.description}
                   </p>
                 </div>
 
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-slate-600/80 font-light">
+                    <li key={featureIndex} className="flex items-center text-slate-700 font-light">
                       <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                       {feature}
                     </li>
@@ -165,7 +150,7 @@ const PricingSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-slate-600/80 font-light">
+          <p className="text-slate-700 font-light">
             All plans include a 30-day money-back guarantee. Need a custom solution? 
             <button 
               onClick={scrollToContact}
